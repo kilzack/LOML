@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Just For You</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -84,6 +83,9 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
 
 .fb{min-height:1.5em; font-weight:700; color:var(--pink-d); margin:0}
 
+/* envelope on the email step */
+.envelope{width:84px; height:64px; margin:-2px auto 10px; display:block; animation:bob 2.4s ease-in-out infinite}
+
 /* birthday result */
 .facts{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px; margin:16px 0}
 .fact{border:3px solid var(--ink); border-radius:18px; padding:10px 6px; background:var(--white)}
@@ -140,11 +142,11 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
   *,*::before,*::after{animation:none!important; transition:none!important}
   #floaters{display:none}
 }
-[hidden]{display:none!important}
 </style>
-
 </head>
 <body>
+
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></symbol>
@@ -155,6 +157,11 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
       <ellipse cx="6.9" cy="12.6" rx="1.3" ry=".8" fill="#ffb59e"/>
       <ellipse cx="17.1" cy="12.6" rx="1.3" ry=".8" fill="#ffb59e"/>
       <path d="M10.6 12.9q1.4 1.5 2.8 0" fill="none" stroke="#6b1840" stroke-width=".9" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="envelope" viewBox="0 0 84 64">
+      <rect x="4" y="8" width="76" height="52" rx="8" fill="#ffffff" stroke="#6b1840" stroke-width="3"/>
+      <path d="M6 14l36 26 36-26" fill="none" stroke="#6b1840" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M42 33c-.6-.55-5.6-4.2-5.6-7.3 0-2 1.5-3.4 3.3-3.4 1 0 1.9.5 2.3 1.2.4-.7 1.3-1.2 2.3-1.2 1.8 0 3.3 1.4 3.3 3.4 0 3.1-5 6.75-5.6 7.3z" fill="#ff4f8b" stroke="#6b1840" stroke-width="1.6" stroke-linejoin="round"/>
     </symbol>
   </defs>
 </svg>
@@ -179,7 +186,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
       </form>
     </section>
 
-    <!-- 2. his name -->
+    <!-- 3. his name -->
     <section class="step" id="s-him" hidden>
       <svg class="mascot" aria-hidden="true"><use href="#face"/></svg>
       <h2 id="him-title">Hi!</h2>
@@ -192,7 +199,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
       <p class="fb" id="fb-him" aria-live="polite"></p>
     </section>
 
-    <!-- 3. birthday -->
+    <!-- 4. birthday -->
     <section class="step" id="s-bday" hidden>
       <svg class="mascot" aria-hidden="true"><use href="#face"/></svg>
       <h2>Do you remember my birthday?</h2>
@@ -215,7 +222,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
       </div>
     </section>
 
-    <!-- 4. love calculator -->
+    <!-- 5. love calculator -->
     <section class="step" id="s-calc" hidden>
       <div class="eyebrow">Official science</div>
       <h2>Love Calculator</h2>
@@ -229,7 +236,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
       </div>
     </section>
 
-    <!-- 5. reasons -->
+    <!-- 6. reasons -->
     <section class="step" id="s-reasons" hidden>
       <svg class="mascot" aria-hidden="true"><use href="#face"/></svg>
       <h2>A few things I love about you</h2>
@@ -238,7 +245,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
       <div class="row"><button class="btn" type="button" data-next id="b-reasons-next" hidden>Next</button></div>
     </section>
 
-    <!-- 6. message -->
+    <!-- 7. message -->
     <section class="step" id="s-msg" hidden>
       <div class="eyebrow">A note from me</div>
       <div class="letter caret" id="letter" aria-live="polite"></div>
@@ -248,7 +255,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
       </div>
     </section>
 
-    <!-- 7. the question -->
+    <!-- 8. the question -->
     <section class="step" id="s-ask" hidden>
       <svg class="big-heart" aria-hidden="true"><use href="#heart"/></svg>
       <h1 id="ask-title">Will you stay by my side forever?</h1>
@@ -259,12 +266,13 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
       </div>
     </section>
 
-    <!-- 8. yes -->
+    <!-- 9. yes -->
     <section class="step" id="s-yes" hidden>
       <svg class="big-heart" aria-hidden="true"><use href="#heart"/></svg>
       <h1 id="yes-title">Yay!</h1>
       <p class="hand" id="yes-line"></p>
       <p>Take a screenshot of this and send it to me. I'll be the one smiling at my phone.</p>
+      <p class="hint" id="yes-mail"></p>
       <button class="btn ghost small" type="button" id="b-replay">Watch it again</button>
     </section>
 
@@ -278,6 +286,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
   </div>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
 <script>
 (function(){
   /* ===== Edit these ===== */
@@ -297,6 +306,11 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
     'The little ways you care without being asked.',
     'You make ordinary days feel like a date.'
   ];
+  /* EmailJS: paste your three values from emailjs.com. Her address lives in the
+     template's "To Email" field, so it is not in this file. */
+  var EMAILJS_PUBLIC_KEY  = 'D55BEZJV_r4YM_Nir';
+  var EMAILJS_SERVICE_ID  = 'service_jqkf5bh';
+  var EMAILJS_TEMPLATE_ID = 'template_egvmhyf';
   /* ====================== */
 
   var HEART = 'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z';
@@ -307,6 +321,13 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
   var order = ['s-name','s-him','s-bday','s-calc','s-reasons','s-msg','s-ask'];
   var steps = order.concat(['s-yes','s-fail']);
   var current = 0;
+
+  /* keepsake email via EmailJS (sends when she says yes) */
+  function sendKeepsake(){
+    if(!window.emailjs || EMAILJS_PUBLIC_KEY.indexOf('PASTE') === 0){ return Promise.reject(new Error('not configured')); }
+    emailjs.init({publicKey: EMAILJS_PUBLIC_KEY});
+    return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {to_name: her, from_name: HIM});
+  }
 
   /* progress dots */
   var dotsEl = $('dots');
@@ -359,7 +380,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
     next();
   });
 
-  /* 2. his name */
+  /* 3. his name */
   var strikes = {him:0, bday:0}, failFrom = null;
   var FORMS = {him:{fb:'fb-him', input:'in-him', btn:'b-him', step:'s-him'}, bday:{fb:'fb-bday', input:'in-bday', btn:null, step:'s-bday'}};
   function wrong(key, btn){
@@ -400,7 +421,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
     }
   });
 
-  /* 3. birthday */
+  /* 4. birthday */
   var SIGNS = [
     ['Capricorn',1,19],['Aquarius',2,18],['Pisces',3,20],['Aries',4,19],['Taurus',5,20],['Gemini',6,20],
     ['Cancer',7,22],['Leo',8,22],['Virgo',9,22],['Libra',10,22],['Scorpio',11,21],['Sagittarius',12,21],['Capricorn',12,31]
@@ -423,7 +444,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
     fb.textContent = '';
     var age = today.getFullYear() - y;
     var nb = new Date(today.getFullYear(), m-1, d);
-    if(nb < today){ nb = new Date(today.getFullYear()+1, m-1, d); age = age; }
+    if(nb < today){ nb = new Date(today.getFullYear()+1, m-1, d); }
     if(new Date(today.getFullYear(), m-1, d) > today){ age -= 1; }
     var days = Math.round((nb - today) / 86400000);
     $('f-sign').textContent = zodiac(m, d);
@@ -438,7 +459,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
     $('bday-out').hidden = false;
   });
 
-  /* 4. love calculator */
+  /* 5. love calculator */
   var calcRunning = false;
   function prepCalc(){
     $('pct').textContent = '0%';
@@ -471,7 +492,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
     }, 60);
   });
 
-  /* 5. reasons */
+  /* 6. reasons */
   (function(){
     var host = $('reasons'), opened = 0;
     REASONS.forEach(function(txt, i){
@@ -490,7 +511,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
     });
   })();
 
-  /* 6. message */
+  /* 7. message */
   var typer = null, started = false;
   function startLetter(){
     if(started) return; started = true;
@@ -517,7 +538,7 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
     }, 18);
   }
 
-  /* 7. the question */
+  /* 8. the question */
   var yes = $('b-yes'), no = $('b-no'), slot = $('no-slot');
   var dodges = 0;
   var NO_TEXT = ['No','Are you sure?','Think again','Really?','Wrong button','Nope, try Yes','Pretty please?','Still no?'];
@@ -550,6 +571,13 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
   yes.addEventListener('click', function(){
     $('yes-title').textContent = 'Yay, ' + her + '!';
     $('yes-line').textContent = 'You just made my whole day. Love, ' + HIM;
+    var ym = $('yes-mail');
+    ym.textContent = 'Sending your keepsake...';
+    sendKeepsake().then(function(){
+      ym.textContent = 'Your keepsake is on its way to your inbox.';
+    }, function(){
+      ym.textContent = 'I couldn’t send your keepsake email. Screenshot this page and send it to me instead.';
+    });
     no.classList.remove('fly'); slot.style.width = ''; slot.style.height = '';
     show(steps.indexOf('s-yes'));
     burst(220, true);
@@ -594,5 +622,6 @@ input:focus-visible{box-shadow:0 0 0 4px var(--peach)}
   show(0);
 })();
 </script>
+
 </body>
 </html>
